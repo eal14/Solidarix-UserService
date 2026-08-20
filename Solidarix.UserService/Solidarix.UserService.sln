@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37216.2 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solidarix.UserService.API", "Solidarix.UserService.API\Solidarix.UserService.API.csproj", "{71A65327-B0B5-45C0-BF9E-8099F0F19B1E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71A65327-B0B5-45C0-BF9E-8099F0F19B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71A65327-B0B5-45C0-BF9E-8099F0F19B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71A65327-B0B5-45C0-BF9E-8099F0F19B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71A65327-B0B5-45C0-BF9E-8099F0F19B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7060C26-B3D3-4509-AA36-CFE72931F681}
+	EndGlobalSection
+EndGlobal
