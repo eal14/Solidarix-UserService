@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37216.2 d17.14
+VisualStudioVersion = 17.14.37216.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solidarix.UserService.API", "Solidarix.UserService.API\Solidarix.UserService.API.csproj", "{71A65327-B0B5-45C0-BF9E-8099F0F19B1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solidarix.UserService.API", "Solidarix.UserService\src\Solidarix.UserService.API\Solidarix.UserService.API.csproj", "{D15A58D3-67E8-5865-311A-24C5CAFFB343}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{71A65327-B0B5-45C0-BF9E-8099F0F19B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71A65327-B0B5-45C0-BF9E-8099F0F19B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71A65327-B0B5-45C0-BF9E-8099F0F19B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71A65327-B0B5-45C0-BF9E-8099F0F19B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D15A58D3-67E8-5865-311A-24C5CAFFB343}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D15A58D3-67E8-5865-311A-24C5CAFFB343}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D15A58D3-67E8-5865-311A-24C5CAFFB343}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D15A58D3-67E8-5865-311A-24C5CAFFB343}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
