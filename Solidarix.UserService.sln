@@ -5,6 +5,14 @@ VisualStudioVersion = 17.14.37216.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solidarix.UserService.API", "src\Solidarix.UserService.API\Solidarix.UserService.API.csproj", "{8B028CCF-3AFB-8D6D-73C6-ADEB41BA57C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solidarix.UserService.Application", "src\Solidarix.UserService.Application\Solidarix.UserService.Application.csproj", "{42BE35A3-A8F5-4F34-A28C-6951DDB3F251}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solidarix.UserService.Domain", "src\Solidarix.UserService.Domain\Solidarix.UserService.Domain.csproj", "{996CC119-B036-4AA4-9BBF-9115386C4358}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solidarix.UserService.Infrastructure", "src\Solidarix.UserService.Infrastructure\Solidarix.UserService.Infrastructure.csproj", "{AEF8BBC2-F606-4712-A8AF-EAF6FAA910F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solidarix.UserService.Tests", "tests\Solidarix.UserService.Tests\Solidarix.UserService.Tests.csproj", "{88CA8327-FBF0-43F3-858A-4E03C81E7FCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{8B028CCF-3AFB-8D6D-73C6-ADEB41BA57C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B028CCF-3AFB-8D6D-73C6-ADEB41BA57C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B028CCF-3AFB-8D6D-73C6-ADEB41BA57C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42BE35A3-A8F5-4F34-A28C-6951DDB3F251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42BE35A3-A8F5-4F34-A28C-6951DDB3F251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42BE35A3-A8F5-4F34-A28C-6951DDB3F251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42BE35A3-A8F5-4F34-A28C-6951DDB3F251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{996CC119-B036-4AA4-9BBF-9115386C4358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996CC119-B036-4AA4-9BBF-9115386C4358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996CC119-B036-4AA4-9BBF-9115386C4358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996CC119-B036-4AA4-9BBF-9115386C4358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF8BBC2-F606-4712-A8AF-EAF6FAA910F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF8BBC2-F606-4712-A8AF-EAF6FAA910F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF8BBC2-F606-4712-A8AF-EAF6FAA910F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF8BBC2-F606-4712-A8AF-EAF6FAA910F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88CA8327-FBF0-43F3-858A-4E03C81E7FCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88CA8327-FBF0-43F3-858A-4E03C81E7FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88CA8327-FBF0-43F3-858A-4E03C81E7FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88CA8327-FBF0-43F3-858A-4E03C81E7FCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

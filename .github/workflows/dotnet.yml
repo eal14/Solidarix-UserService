@@ -1,4 +1,17 @@
-name: .NET Build & Test
+name: .NET Build, Test, Publish & Docker
+
+env:
+  # POSTGRES_HOST: postgresdb
+  # POSTGRES_PORT: 5432
+  # POSTGRES_DB: solidarix_users
+  # POSTGRES_USER: solidarix
+  # POSTGRES_PASSWORD: solidarix123
+  SQLSERVER_HOST: sqlserverdb
+  SQLSERVER_DB: SolidarixUsers
+  SQLSERVER_USER: sa
+  SQLSERVER_PASSWORD: YourPassword
+
+
 
 on:
   push:
@@ -27,3 +40,25 @@ jobs:
 
       - name: Test
         run: dotnet test Solidarix.UserService.sln --no-build --verbosity normal
+
+      - name: Publish
+        run: dotnet publish src/Solidarix.UserService.API/Solidarix.UserService.API.csproj -c Release -o ./publish
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Solidarix-UserService
+          path: ./publish
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: docker build -t ghcr.io/${{ github.repository }}/solidarix-userservice:latest -f src/Solidarix.UserService.API/Dockerfile .
+
+      - name: Push Docker image
+        run: docker push ghcr.io/${{ github.repository }}/solidarix-userservice:latest

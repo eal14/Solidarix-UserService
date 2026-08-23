@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  userservice-api:
+    build:
+      context: .
+      dockerfile: src/Solidarix.UserService.API/Dockerfile
+    ports:
+      - "5000:80"
+    depends_on:
+      - sqlserverdb
+
+  sqlserverdb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: solidarix_sqlserver
+    environment:
+      SA_PASSWORD: "YourPassword"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+volumes:
+  sqlserver_data:
