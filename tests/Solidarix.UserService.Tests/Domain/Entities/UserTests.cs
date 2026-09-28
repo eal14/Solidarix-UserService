@@ -6,32 +6,38 @@ namespace Solidarix.UserService.Tests.Domain.Entities
     public class UserTests
     {
         [Fact]
-        public void User_Should_Store_Email_And_PasswordHash()
+        public void Constructor_ShouldSetProperties()
         {
-            var user = new User("test@example.com", "hashed123");
+            var user = new User("test@example.com", "hashed123", "Test User");
 
             Assert.Equal("test@example.com", user.Email);
             Assert.Equal("hashed123", user.PasswordHash);
+            Assert.Equal("Test User", user.FullName);
+            Assert.NotEqual(Guid.Empty, user.Id);
         }
 
         [Fact]
-        public void VerifyPassword_Should_Return_True_When_HashMatches()
+        public void UpdatePassword_ShouldChangePasswordHash()
         {
-            var user = new User("test@example.com", "hashed123");
+            var user = new User("test@example.com", "oldHash", "Test User");
 
-            var result = user.VerifyPassword("hashed123");
+            user.UpdatePassword("newHash");
 
-            Assert.True(result);
+            Assert.Equal("newHash", user.PasswordHash);
         }
 
         [Fact]
-        public void VerifyPassword_Should_Return_False_When_HashDoesNotMatch()
+        public void Constructor_ShouldThrow_WhenEmailEmpty()
         {
-            var user = new User("test@example.com", "hashed123");
+            Assert.Throws<DomainException>(() => new User("", "hash", "Test User"));
+        }
 
-            var result = user.VerifyPassword("wronghash");
+        [Fact]
+        public void UpdatePassword_ShouldThrow_WhenEmpty()
+        {
+            var user = new User("test@example.com", "oldHash", "Test User");
 
-            Assert.False(result);
+            Assert.Throws<DomainException>(() => user.UpdatePassword(""));
         }
     }
 }

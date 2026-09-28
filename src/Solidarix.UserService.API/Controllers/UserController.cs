@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Solidarix.UserService.Domain.Entities;
+using Solidarix.UserService.Application.Interfaces;
+
 
 namespace Solidarix.UserService.API.Controllers
 {
@@ -10,8 +12,8 @@ namespace Solidarix.UserService.API.Controllers
     public class UserController : Controller
     {
         private readonly IStringLocalizer<UserController> _localizer;
-        //private readonly IUserRepository _userRepository;
-        //private readonly ITokenService _tokenService;
+        private readonly IUserRepository _userRepository;
+        private readonly ITokenService _tokenService;
 
         public UserController(
             IStringLocalizer<UserController> localizer,
@@ -29,7 +31,7 @@ namespace Solidarix.UserService.API.Controllers
             try
             {
                 var user = new User(dto.Email, dto.PasswordHash, dto.FullName);
-                _userRepository.Add(user);
+                _userRepository.AddAsync(user);
 
                 return Ok(new { message = _localizer["Signup_Success"] });
             }
@@ -42,9 +44,9 @@ namespace Solidarix.UserService.API.Controllers
 
         // POST api/v1/user/login
         [HttpPost("login")]
-        public IActionResult Login(LoginDto dto)
+        public async Task<IActionResult> Login(LoginDto dto)
         {
-            var user = _userRepository.GetByEmail(dto.Email);
+            var user = await _userRepository.GetByEmailAsync(dto.Email);
             if (user == null || user.PasswordHash != dto.PasswordHash)
                 return Unauthorized(new { error = _localizer["Error_InvalidCredentials"] });
 
@@ -54,14 +56,20 @@ namespace Solidarix.UserService.API.Controllers
 
         // POST api/v1/user/refresh
         [HttpPost("refresh")]
-        public IActionResult Refresh(RefreshDto dto)
+        public async Task<IActionResult> Refresh([FromBody] RefreshDto dto)
         {
-            var newToken = _tokenService.RefreshToken(dto.Token);
-            if (newToken == null)
-                return Unauthorized(new { error = _localizer["Error_InvalidToken"] });
+            if (string.IsNullOrWhiteSpace(dto.RefreshToken))
+                return BadRequest(new { error = _localizer["Error_InvalidToken"] });
 
+            // TODO: validar refresh token contra Redis
+            var user = await _userRepository.GetByEmailAsync(dto.Email);
+            if (user == null)
+                return BadRequest(new { error = _localizer["Error_InvalidCredentials"] });
+
+            var newToken = _tokenService.GenerateToken(user);
             return Ok(new { token = newToken });
         }
+
         public IActionResult Index()
         {
             return View();
@@ -71,5 +79,5 @@ namespace Solidarix.UserService.API.Controllers
     // DTOs
     public record SignupDto(string Email, string PasswordHash, string FullName);
     public record LoginDto(string Email, string PasswordHash);
-    public record RefreshDto(string Token);
+    public record RefreshDto(string Email, string Token, string RefreshToken);
 }
